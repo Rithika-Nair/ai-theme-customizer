@@ -1,25 +1,28 @@
 'use client'
-import BusinessIdeaForm from "./BusinessIdeaForm";
-import React from 'react';
+import React, { useState } from 'react';
 import { FaArrowDownLong } from "react-icons/fa6";
+import BusinessIdeaForm from "./BusinessIdeaForm";
 import HeroPreview from "./HeroPreview";
 import ThemeDetails from "./ThemeDetails";
 
-const aiResponse = {
-  "bgColor": "#FDFBF7",
-  "textColor": "#1C1C1C",
-  "accentColor": "#CFA66F",
-  "fonts": {
-    "logo": "Cinzel, serif",
-    "heading": "Playfair Display, serif",
-    "body": "Inter, sans-serif"
-  },
-  "headline": "Elegant Designs, Modern Spirit",
-  "subtext": "Auralie crafts refined, contemporary jewellery pieces for a youthful, stylish audience—perfect for everyday elegance and special moments.",
-  "ctatext": "Explore the Collection"
-};
+// const aiResponse = {
+//   "bgColor": "#FDFBF7",
+//   "textColor": "#1C1C1C",
+//   "accentColor": "#CFA66F",
+//   "fonts": {
+//     "logo": "Cinzel, serif",
+//     "heading": "Playfair Display, serif",
+//     "body": "Inter, sans-serif"
+//   },
+//   "headline": "Elegant Designs, Modern Spirit",
+//   "subtext": "Auralie crafts refined, contemporary jewellery pieces for a youthful, stylish audience—perfect for everyday elegance and special moments.",
+//   "ctatext": "Explore the Collection"
+// };
   
 export default function Home() {
+  const [aiResponse, setAiResponse] = useState(null);
+  const [businessName, setBusinessName] = useState("");
+
   return (
     <div className="pt-15 pl-15 pr-10 w-full">
       <main className="flex flex-col w-full">
@@ -35,19 +38,27 @@ export default function Home() {
           <h1 className="text-[1.2rem] font-roboto color-accent">Scroll Down & Get Started&nbsp;</h1>
           <h1 className="text-[1rem] color-accent"><FaArrowDownLong/></h1>
         </div>
+
         <div className="w-full mb-10" id="form">
-          <BusinessIdeaForm />
+          <BusinessIdeaForm 
+            onThemeGenerated={(themeJson, name) => {
+              setAiResponse(themeJson);
+              setBusinessName(name);
+            }}
+          />
         </div>
-        {aiResponse?.fonts && (
-          <div className="w-full mt-1 p-2 mb-2 mr-10 w-full rounded-md shadow-[0_0_4px_2px_#BB86FC]">
-            <HeroPreview businessName="Auralie" theme={aiResponse} />
-          </div>
+
+        {aiResponse && (
+          <>
+            <div className="w-full mt-1 p-2 mr-10">
+              <ThemeDetails theme={aiResponse} />
+            </div>
+            <div className="w-full mt-1 p-2 mb-2 mr-10 rounded-md shadow-[0_0_4px_2px_#BB86FC]">
+              <HeroPreview businessName={businessName} theme={aiResponse} />
+            </div>
+          </>
         )}
-        {aiResponse?.fonts && (
-          <div className="w-full mt-1 p-2 mr-10 w-full">
-            <ThemeDetails theme={aiResponse} />
-          </div>
-        )}
+
       </main>
       <footer className="mt-[5rem] mb-5 w-full flex justify-end">
         Created by&nbsp;
