@@ -66,4 +66,20 @@ Name: ${businessName} -- Description: ${businessDescription}
     }
     return new Response(JSON.stringify({ error: "Server error", details: err.message }), { status: 500 });
   }
+  // Mock response for testing
+  // return new Response(
+  //   JSON.stringify({
+  //     theme: {
+  //       bgColor: "#FAF6F0",
+  //       textColor: "#2C2C2C",
+  //       accentColor: "#B86B4B",
+  //       fonts: { logo: "Marcellus", heading: "Cormorant", body: "Karla" },
+  //       headline: "Test Headline",
+  //       subtext: "This is a mock preview.",
+  //       ctatext: "Click Here",
+  //       "design rationale": "Mock rationale for testing."
+  //     }
+  //   }),
+  //   { status: 200, headers: { "Content-Type": "application/json" } }
+  // );
 }
