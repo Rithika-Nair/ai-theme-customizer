@@ -51,10 +51,10 @@ const BusinessIdeaForm = ({ onThemeGenerated }) => {
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className="grid grid-cols-3 mr-10">
+      <div className="grid grid-cols-1 sm:grid-cols-3 w-full sm:mr-10">
 
         {/* Business Name */}
-        <div className="col-span-2">
+        <div className="col-span-3 sm:col-span-2">
           <label htmlFor="name" className="text-[1.25rem]">Business Name</label>
           <input
             type="name"
@@ -69,7 +69,7 @@ const BusinessIdeaForm = ({ onThemeGenerated }) => {
         </div>
 
         {/* Business Description */}
-        <div className="col-span-3 mt-10 mr-10">
+        <div className="col-span-3 mt-10 sm:mr-10">
           <label htmlFor="description" className="text-[1.25rem]">Describe Your Business</label>
           <textarea
             id="description"
@@ -84,7 +84,7 @@ const BusinessIdeaForm = ({ onThemeGenerated }) => {
         </div>
 
         {/* Submit Button */}
-        <div className="col-span-1 col-start-2 mt-10">
+        <div className="sm:col-span-1 sm:col-start-2 mt-10">
           <button type="submit"
             disabled={loading}
             className="cursor-pointer w-full dark rounded-md">

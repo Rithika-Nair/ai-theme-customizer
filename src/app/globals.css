@@ -17,13 +17,18 @@ button {
   align-items: center;
   background-color: var(--accent);
   color: var(--background);
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 32px;
   cursor: pointer;
   margin-left: auto;
   font-family: var(--font-inter);
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 0.7rem;
+
+  @media (width >= 640px) {
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+  }
 }
 
 .font-roboto {
